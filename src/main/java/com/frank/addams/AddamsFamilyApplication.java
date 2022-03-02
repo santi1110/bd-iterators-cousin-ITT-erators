@@ -23,12 +23,14 @@ public class AddamsFamilyApplication {
         /********************************************************************************************
         * Constants representing menu options
         ********************************************************************************************/
-        private static final String DISPLAY_ALL_ADDAMS_OPTION    = "Display all Addams'";
-        private static final String DISPLAY_BY_NAME_OPTION       = "Find an Addams";
-        private static final String CHANGE_AN_ADDAMS_NAME_OPTION = "Change an Addams name";
-        private static final String REMOVE_AN_ADDAMS_OPTION      = "Remove an Addams";
-        private static final String REFRESH_DATA_FROM_FILE       = "Refresh data from file";
-        private static final String EXIT_OPTION                  = "Exit";
+        private static final String DISPLAY_ALL_ADDAMS_OPTION       = "Display all Addams'";
+        private static final String DISPLAY_BY_NAME_OPTION          = "Find an Addams";
+        private static final String CHANGE_AN_ADDAMS_NAME_OPTION    = "Change an Addams name";
+        private static final String REMOVE_AN_ADDAMS_OPTION         = "Remove an Addams";
+        private static final String DISPLAY_ADDAMS_IN_REVERSE_ORDER = "Display all Addams in reverse order";
+        private static final String ADD_A_NEW_ADDAMS                = "Add a new Addams";
+        private static final String REFRESH_DATA_FROM_FILE          = "Refresh data from file";
+        private static final String EXIT_OPTION                     = "Exit";
 
         /********************************************************************************************
         * Array of menu options display to users as needed
@@ -37,6 +39,8 @@ public class AddamsFamilyApplication {
                                                         , DISPLAY_BY_NAME_OPTION
                                                         , CHANGE_AN_ADDAMS_NAME_OPTION
                                                         , REMOVE_AN_ADDAMS_OPTION
+                                                        , DISPLAY_ADDAMS_IN_REVERSE_ORDER
+                                                        , ADD_A_NEW_ADDAMS
                                                         , REFRESH_DATA_FROM_FILE
                                                         , EXIT_OPTION
                                                         };
@@ -49,8 +53,8 @@ public class AddamsFamilyApplication {
          * Constructor for this application
          ********************************************************************************************/
         public AddamsFamilyApplication() throws FileNotFoundException {
-
-                theAddamsFamily = new ArrayList<>();   // Instantiate structure to hold family members
+                // Note: use of LinkedList rather than ArrayList due to efficiency when adding/removing
+                theAddamsFamily = new LinkedList<>();  // Instantiate structure to hold family members
                 loadFamilyMembersFromFile();           // Load data structure with family members in a file
         }
         /********************************************************************************************
@@ -83,7 +87,15 @@ public class AddamsFamilyApplication {
                                       break;
                                  }
                                 case REMOVE_AN_ADDAMS_OPTION: {
-                                        removeAnAddams();
+                                     removeAnAddams();
+                                     break;
+                                }
+                                case DISPLAY_ADDAMS_IN_REVERSE_ORDER: {
+                                     displayAllInReverseOrder();
+                                     break;
+                                }
+                                case ADD_A_NEW_ADDAMS: {
+                                        addANewAddams();
                                         break;
                                 }
                                 case REFRESH_DATA_FROM_FILE: {
@@ -175,6 +187,7 @@ public class AddamsFamilyApplication {
          * Display selected entries from data structure holding application data
          ********************************************************************************************/
         public void displayByName() {
+
                 List<Person> listOfAddams = new LinkedList<>();                    // Hold selected entries from data structure
 
                 AddamsSearchCriteria whatTheyWant = solicitAddamsSearchCriteria(); // Ask user for search criteria
@@ -360,6 +373,21 @@ public class AddamsFamilyApplication {
                 }
                 return foundPeople;    // return container holding found entries
         }
-
+        /********************************************************************************************
+         * Display all entries in the data structure in reverse
+         ********************************************************************************************/
+        public void displayAllInReverseOrder() {
+                // TODO: Add code to implement this feature
+               System.out.println("\n" + "-".repeat(60) +"\n----- Sorry, this feature has not been implemented yet -----\n"
+                                       + "-".repeat(60) + "\n");
+        }
+        /********************************************************************************************
+         * Find entries in the data structure by full or partial name
+         ********************************************************************************************/
+        public void addANewAddams() {
+                // TODO: Add code to implement this feature
+                System.out.println("\n" + "-".repeat(60) +"\n----- Sorry, this feature has not been implemented yet -----\n"
+                                        + "-".repeat(60) + "\n");
+        }
 
 } // End of ApplicationProgram class
