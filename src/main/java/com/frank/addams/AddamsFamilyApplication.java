@@ -95,13 +95,13 @@ public class AddamsFamilyApplication {
                                      break;
                                 }
                                 case ADD_A_NEW_ADDAMS: {
-                                        addANewAddams();
-                                        break;
+                                     addANewAddams();
+                                     break;
                                 }
                                 case REFRESH_DATA_FROM_FILE: {
-                                        theAddamsFamily.removeAll(theAddamsFamily);  // Remove all app data structure current entries
-                                        loadFamilyMembersFromFile();                 // Reload app data structure
-                                        break;
+                                     theAddamsFamily.removeAll(theAddamsFamily);  // Remove all app data structure current entries
+                                     loadFamilyMembersFromFile();                 // Reload app data structure
+                                     break;
                                 }
                                  case EXIT_OPTION: {
                                       shouldLoop = false;
@@ -117,10 +117,10 @@ public class AddamsFamilyApplication {
                  }
             }
             endOfApplicationProcessing();     // Perform any clean up at end of the application
-        }  // End of main() method
+        }  // End of main processing method - run()
 
 /**********************************************************************************************************
- * main() helper methods
+ * main processing helper methods
  *********************************************************************************************************/
 
         /********************************************************************************************
