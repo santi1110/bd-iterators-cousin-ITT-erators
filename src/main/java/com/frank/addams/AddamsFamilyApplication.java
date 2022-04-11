@@ -45,7 +45,7 @@ public class AddamsFamilyApplication {
                                                         , EXIT_OPTION
                                                         };
         /********************************************************************************************
-         * List of menu options display to users as needed
+         * List of Addams Family members
          ********************************************************************************************/
         private List<Person> theAddamsFamily;
 
@@ -382,7 +382,7 @@ public class AddamsFamilyApplication {
                                        + "-".repeat(60) + "\n");
         }
         /********************************************************************************************
-         * Find entries in the data structure by full or partial name
+         * Add an new Addams to the family
          ********************************************************************************************/
         public void addANewAddams() {
                 // TODO: Add code to implement this feature
