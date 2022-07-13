@@ -6,7 +6,7 @@ The project throws a ***ConcurrentModificationException*** which we will elimina
 
 We will implement additional functionality using ***ListIterators<>***.
 
-##Iterators
+## Iterators
 
 Iterators provide:
 
