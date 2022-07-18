@@ -28,7 +28,6 @@ public class AddamsFamilyApplication {
         private static final String CHANGE_AN_ADDAMS_NAME_OPTION    = "Change an Addams name";
         private static final String REMOVE_AN_ADDAMS_OPTION         = "Remove an Addams";
         private static final String DISPLAY_ADDAMS_IN_REVERSE_ORDER = "Display all Addams in reverse order";
-        private static final String ADD_A_NEW_ADDAMS                = "Add a new Addams";
         private static final String REFRESH_DATA_FROM_FILE          = "Refresh data from file";
         private static final String EXIT_OPTION                     = "Exit";
 
@@ -40,7 +39,6 @@ public class AddamsFamilyApplication {
                                                         , CHANGE_AN_ADDAMS_NAME_OPTION
                                                         , REMOVE_AN_ADDAMS_OPTION
                                                         , DISPLAY_ADDAMS_IN_REVERSE_ORDER
-                                                        , ADD_A_NEW_ADDAMS
                                                         , REFRESH_DATA_FROM_FILE
                                                         , EXIT_OPTION
                                                         };
@@ -92,10 +90,6 @@ public class AddamsFamilyApplication {
                                 }
                                 case DISPLAY_ADDAMS_IN_REVERSE_ORDER: {
                                      displayAllInReverseOrder();
-                                     break;
-                                }
-                                case ADD_A_NEW_ADDAMS: {
-                                     addANewAddams();
                                      break;
                                 }
                                 case REFRESH_DATA_FROM_FILE: {
@@ -381,13 +375,4 @@ public class AddamsFamilyApplication {
                System.out.println("\n" + "-".repeat(60) +"\n----- Sorry, this feature has not been implemented yet -----\n"
                                        + "-".repeat(60) + "\n");
         }
-        /********************************************************************************************
-         * Add an new Addams to the family
-         ********************************************************************************************/
-        public void addANewAddams() {
-                // TODO: Add code to implement this feature
-                System.out.println("\n" + "-".repeat(60) +"\n----- Sorry, this feature has not been implemented yet -----\n"
-                                        + "-".repeat(60) + "\n");
-        }
-
 } // End of ApplicationProgram class
