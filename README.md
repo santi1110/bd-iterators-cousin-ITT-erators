@@ -31,7 +31,7 @@ The *ListIterator<>* includes the following methods to help us traverse a list:
 - **hasNext()**: returns true if the iterator has at least one more element to iterate through.
 - **next()**: returns the next element in the collection as long as *hasNext()* is true and throws a ***NoSuchElementException*** if *hasNext()* is false.
 - **remove()**: returns the next element in the collection as long as *hasNext()* is true and throws a ***NoSuchElementException*** if *hasNext()* is false.
-- **add(element)**: inserts an object immediately before the current cursor position. The element must be the type that the iterator has said it holds.
+- **add(element)**: inserts an element immediately before the element that would be returned by next() or after the element that would be returned previous() method.
 - **set(element)**: replaces (updates) the last element returned by next() and throws an IllegalStateException if the method is called before an element has been returned by next().
 - **hasPrevious()**: returns true if the iterator has at least one more previous element to iterate through.
 - **previous()**:  returns the next element in the collection as long as *hasPrevious()* is true and throws a ***NoSuchElementException*** if *hasPrecious()* is false.

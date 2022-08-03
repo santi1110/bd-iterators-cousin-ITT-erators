@@ -125,6 +125,8 @@ public class AddamsFamilyApplication {
                 int response = -1;  // initialze response to invalid value to be sure we store what user enters
 
                 System.out.println("\nYou rang??? WattaYaWannaDo? (enter number of option)\n");
+                // Iterators may NOT used for simple array
+                // Iterators may only be used with Collections class linear data structure
                 for (int i = 0; i < mainMenuOptions.length; i++) {              // Loop through menu option array
                         System.out.println(i + 1 + ". " + mainMenuOptions[i]);  //     display a menu option
                 }
@@ -145,7 +147,12 @@ public class AddamsFamilyApplication {
         ********************************************************************************************/
         public void startOfApplicationProcessing() throws FileNotFoundException{
 
+                // Assign error messages to be written a file instead of the screen
+                // 1. Instantiate a PrintStream object to assign file to the PrintStream object
                 PrintStream fileProcessingErrorLogFile = new PrintStream("fileProcessingError.log");
+                // 2. Tell Java to use the PrintStream object for error messages
+                //       use System.setErr() method
+                //    Also you may assign System.out output to a file using setOut() method
                 System.setErr(fileProcessingErrorLogFile);
 
                 System.out.println(Emogis.BLACK_SPIDER_WITH_EIGHT_LEGS.repeat(40));
@@ -168,7 +175,10 @@ public class AddamsFamilyApplication {
                 String borderIcon = Emogis.TELEVISION;
 
                 System.out.println("\n"+ (borderIcon + " ").repeat(13)) ;
-                for (Person anAddams : theAddamsFamily) {
+                // for (Person anAddams : theAddamsFamily) {  // replaced by Iterator
+                Iterator<Person> addamsIterator = theAddamsFamily.iterator();  // Instantiate an Iterator for the List
+                while(addamsIterator.hasNext()) {   // Loop while the Iterator has a next element
+                    Person anAddams = addamsIterator.next();   // get the next element from the Iteratr
                     personCount++;
                    System.out.printf("%s %2d. %-30s %-8s",borderIcon,personCount,anAddams.getName(),borderIcon);
                    if (personCount != theAddamsFamily.size()) {
@@ -193,7 +203,10 @@ public class AddamsFamilyApplication {
                 System.out.println("\nNumber of Addams' found containing " + whatTheyWant.getSearchValue() + " in name: " + listOfAddams.size());
 
                 // Loop through extracted entries and display them one at a time
-                for(Person anAddams : listOfAddams) {
+                // for(Person anAddams : slistOfAddam) {  // Replaced by Iterator
+                Iterator<Person> anIterator = listOfAddams.iterator();  // Instantiate an Iterator for Collections List
+                while(anIterator.hasNext()) { // Loop while the Iterator still has data
+                Person anAddams = anIterator.next();   // Get the next element from the Iterator
                         System.out.printf("%10d %-30s\n",anAddams.getId(),anAddams.getName());
                 }
         }
@@ -245,7 +258,10 @@ public class AddamsFamilyApplication {
                 aListOfAddams = findAnAddamsByName(whatTheyWant.getSearchValue().strip(), whatTheyWant.isCaseSensitiveSearch());
 
                 // Loop through extracted entries, display each one and ask if user wants to delete it
-                for (Person anAddams : aListOfAddams) {
+                // for (Person anAddams : aListOfAddams) {  // Replaced by an Iterator to avoid the ConcurrentModificationException
+                Iterator<Person> cousinITTerator = aListOfAddams.iterator();  // Instantiate and Iterator for Collections List
+                while(cousinITTerator.hasNext()) {   // Loop while the Iterator has data
+                Person anAddams = cousinITTerator.next();   // get the next element from the Iterator
                         // Show user the current entry from extracted entries
                         System.out.println("Found: " + anAddams);
 
@@ -255,7 +271,9 @@ public class AddamsFamilyApplication {
 
                         if (deleteResponse.startsWith("Y")) {             // If user wants to delete entry...
                                 if (theAddamsFamily.remove(anAddams)) {   //    remove it from the data structure
-                                    aListOfAddams.remove(anAddams);       //       and from the extracted entries
+                                    // Replace the .remove() from List<> with the .remove() of Iterator
+                                    // aListOfAddams.remove(anAddams);    //       and from the extracted entries
+                                    cousinITTerator.remove();             //       and from the extracted entries
                                     System.out.println("----- Removal of " + anAddams.getName() + " was successful");
                                 } else {                                  // if user does not want to delete entry...
                                     System.out.println("----- Removal of " + anAddams.getName() + " failed");
@@ -372,7 +390,19 @@ public class AddamsFamilyApplication {
          ********************************************************************************************/
         public void displayAllInReverseOrder() {
                 // TODO: Add code to implement this feature
-               System.out.println("\n" + "-".repeat(60) +"\n----- Sorry, this feature has not been implemented yet -----\n"
-                                       + "-".repeat(60) + "\n");
+                //
+                // Instanitiate a ListIterator telling to start at the last element in the List
+                //          default starting position for ListIterator is at the first element
+                //
+                //          listObject.size() give you the position of the last element in the List
+                //          listObject,size()-1 gives you the next to last element (index of last element, NOT position)
+                ListIterator<Person> aListIterator = theAddamsFamily.listIterator(theAddamsFamily.size()-1);
+                // Set up a loop to process backwards using the ListIterator
+                while(aListIterator.hasPrevious()) {
+                        //     get the previous element
+                        Person someAddams = aListIterator.previous();
+                        //     Process the element
+                        System.out.println(someAddams);
+                }
         }
 } // End of ApplicationProgram class
